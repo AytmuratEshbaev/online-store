@@ -1,0 +1,50 @@
+.header-middle .react-select-container{
+  display: none;
+  z-index: 1050;
+}
+
+.header-middle .react-select__control {
+  padding: 0 10px;
+  color: #242424;
+  font-size: 13px;
+  border: none;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  outline: none;
+  margin: 0;
+  box-shadow: none;
+  cursor: pointer;
+}
+.header-middle .react-select__option {
+  color: #242424;
+}
+
+.header-middle .react-select__option:hover {
+  color: #fff;
+  background-color: #fed700;
+}
+
+.header-middle .react-select__option:focus {
+  background-color: #fed700;
+}
+
+.header-middle .react-select__value-container {
+  padding: 0 10px;
+  height: 43px;
+  cursor: pointer;
+}
+
+.header-middle .react-select__single-value {
+  color: #242424;
+  width: 150px;
+}
+
+@media (min-width: 576px){
+  .header-middle .react-select-container{
+    display: block;
+  }
+
+  .header-middle .react-select__control{
+    padding: 0;
+  }
+}

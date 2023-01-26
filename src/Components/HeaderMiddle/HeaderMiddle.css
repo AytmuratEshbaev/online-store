@@ -1,0 +1,262 @@
+.header-middle {
+  padding: 15px 30px;
+}
+.hm-searchbox {
+  display: flex;
+  position: relative;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid #e1e1e1;
+  width: 100%;
+  height: 45px;
+  min-width: 268px;
+  float: unset;
+}
+
+.hm-searchbox input {
+  font-size: 13px;
+  color: #a5a5a5;
+  height: 45px;
+  background: transparent;
+  border: none;
+  width: 100%;
+  padding: 0 60px 0 15px;
+}
+
+.header-middle-right {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+.hm-wishlist {
+  float: left;
+  position: relative;
+  margin-right: 15px;
+}
+
+.hm-wishlist > a {
+  border: 1px solid #e1e1e1;
+  font-size: 20px;
+  color: #242424;
+  text-decoration: none;
+  width: 45px;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+  display: block;
+  transition: all 0.3s ease-in-out;
+  font-family: "Rubik", sans-serif, "icomoon";
+}
+.hm-wishlist > a:hover {
+  border-color: #fed700;
+  color: #fed700;
+}
+
+.hm-minicart {
+  display: inline-block;
+  position: relative;
+}
+.hm-minicart-trigger {
+  border-radius: 2px;
+  background: #e80f0f;
+  color: #fff;
+  height: 45px;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  padding: 0 15px 0 55px;
+}
+
+.hm-minicart:hover .minicart {
+  transform: scaleY(1);
+}
+.item-icon::before {
+  content: "\e903";
+  position: absolute;
+  font-family: "icomoon";
+  left: 10px;
+  top: 6px;
+  display: block;
+  font-size: 20px;
+}
+.item-text {
+  position: relative;
+  line-height: 45px;
+  font-weight: 500;
+}
+.item-text::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  height: 22px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  top: -1px;
+}
+
+.hm-minicart-trigger .item-text::after {
+  color: #fff;
+}
+
+.cart-item-count {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  min-width: 26px;
+  line-height: 26px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #242424;
+  background: #fed700;
+  text-align: center;
+  border-radius: 100%;
+  top: -30px;
+  left: -59px;
+}
+.wishlist-item-count {
+  top: -10px;
+  left: -10px;
+}
+
+.hm-minicart-trigger .item-text::after {
+  content: "\e902";
+  font-size: 14px;
+  color: #fff;
+  margin-left: 5px;
+  font-family: "icomoon";
+}
+
+.hm-minicart:hover .item-text::after {
+  transform: rotate(-180deg);
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 479px) {
+  .minicart {
+    left: -120px;
+  }
+}
+
+@media (min-width: 480px) {
+  .header-middle-right {
+    padding-top: 30px;
+  }
+
+  .hm-wishlist {
+    margin-right: 30px;
+  }
+
+  .minicart {
+    left: 0;
+    right: auto;
+  }
+}
+
+@media (min-width: 576px) {
+  .header-middle-right {
+    justify-content: flex-start;
+    padding: 30px 0;
+  }
+  .header-middle .hm-menu {
+    padding: 0;
+  }
+  .hm-wishlist {
+    margin-right: 40px;
+  }
+  .hm-minicart-trigger {
+    padding: 0 10px 0 35px;
+    font-size: 15px;
+  }
+  .item-icon::before {
+    left: 10px;
+    top: 11px;
+    font-size: 15px;
+  }
+  .item-text::before {
+    left: -4px;
+    height: 15px;
+    top: 0;
+  }
+  .cart-item-count {
+    top: -28px;
+    left: -40px;
+    min-width: 26px;
+    font-size: 12px;
+  }
+  .cart-item-count.wishlist-item-count {
+    left: -10px;
+    top: -10px;
+  }
+
+  .hm-minicart-trigger .item-text::after {
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  .minicart {
+    left: 0;
+    right: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .header-middle-right {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-end;
+  }
+  .hm-searchbox {
+    min-width: 200px;
+  }
+  .hm-wishlist {
+    margin-right: 15px;
+  }
+  .hm-menu {
+    height: auto;
+    padding: 0;
+    text-align: right;
+  }
+
+  .minicart {
+    right: 0;
+    left: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .header-middle {
+    padding: 30px 0;
+  }
+  .hm-searchbox {
+    min-width: 458px;
+  }
+}
+.mobile-menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  padding-top: 20px;
+}
+.mobile-menu span {
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media (min-width: 767.1px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) {
+  .mobile-menu {
+    padding-top: 0px;
+  }
+}
