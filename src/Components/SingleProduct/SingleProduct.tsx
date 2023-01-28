@@ -35,19 +35,19 @@ function SingleProduct(props: Props) {
               <div className="rating-box">
                 <ul className="rating">
                   <li>
-                    <i className="fa fa-star-o"></i>
+                    <i className="icon-star"></i>
                   </li>
                   <li>
-                    <i className="fa fa-star-o"></i>
+                    <i className="icon-star"></i>
                   </li>
                   <li>
-                    <i className="fa fa-star-o"></i>
+                    <i className="icon-star"></i>
                   </li>
                   <li className="no-star">
-                    <i className="fa fa-star-o"></i>
+                    <i className="icon-star"></i>
                   </li>
                   <li className="no-star">
-                    <i className="fa fa-star-o"></i>
+                    <i className="icon-star"></i>
                   </li>
                 </ul>
               </div>
@@ -82,7 +82,7 @@ function SingleProduct(props: Props) {
               </li>
               <li>
                 <a className="links-details" href="#">
-                  <i className="fa fa-heart-o"></i>
+                <i className="icon-heart-o"></i>
                 </a>
               </li>
               <li>
@@ -93,7 +93,7 @@ function SingleProduct(props: Props) {
                   data-toggle="modal"
                   data-target="#exampleModalCenter"
                 >
-                  <i className="fa fa-eye"></i>
+                  <i className="icon-eye"></i>
                 </a>
               </li>
             </ul>

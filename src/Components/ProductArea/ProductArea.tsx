@@ -1,7 +1,8 @@
-import { Container, Row, Col, Carousel } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import SingleProduct from "../SingleProduct";
 import "./ProductArea.css";
-// import Slider from "react-slick";
+import Slider from "react-slick";
+
 
 const products = {
   new: [
@@ -230,12 +231,13 @@ const products = {
 
 function ProductArea() {
   const settings = {
-    dots: true,
-    infinite: false,
+    dots: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
     initialSlide: 0,
+    arrows: false,
     responsive: [
       {
         breakpoint: 1024,
@@ -243,7 +245,6 @@ function ProductArea() {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true,
         },
       },
       {
@@ -295,39 +296,31 @@ function ProductArea() {
           </Col>
         </Row>
         <div className="tab-content">
-          <div
-            id="li-new-product"
-            className="tab-pane active show"
-            role="tabpanel"
-          >
+          <div id="li-new-product" className="tab-pane active show" role="tabpanel">
             <Row>
-              {/* <Slider className="product-active" {...settings}>
+              <Slider className="product-active" {...settings}>
                 {products.new.map((product: any) => (
                   <SingleProduct product={product} />
                 ))}
-              </Slider> */}
+              </Slider>
             </Row>
-          </div>
+          </div>  
           <div id="li-bestseller-product" className="tab-pane" role="tabpanel">
-            <Row>
-              <Carousel className="product-active owl-carousel">
-                {products.bestSeller.map((product: any) => (
-                  <Carousel.Item>
-                    <SingleProduct product={product} />
-                  </Carousel.Item>
+          <Row>
+              <Slider className="product-active" {...settings}>
+                {products.new.map((product: any) => (
+                  <SingleProduct product={product} />
                 ))}
-              </Carousel>
+              </Slider>
             </Row>
           </div>
           <div id="li-featured-product" className="tab-pane" role="tabpanel">
-            <Row>
-              <Carousel className="product-active owl-carousel">
-                {products.featured.map((product: any) => (
-                  <Carousel.Item>
-                    <SingleProduct product={product} />
-                  </Carousel.Item>
+          <Row>
+              <Slider className="product-active" {...settings}>
+                {products.new.map((product: any) => (
+                  <SingleProduct product={product} />
                 ))}
-              </Carousel>
+              </Slider>
             </Row>
           </div>
         </div>

@@ -667,7 +667,7 @@ const catalog = [
 ];
 
 function CategoryMenu() {
-  const [openMenu, setOpenMenu] = useState(false);
+  const [openMenu, setOpenMenu] = useState(true);
 
   return (
     <div className="category-menu">

@@ -378,7 +378,7 @@ textarea:focus {
 .bg-1,
 .bg-2,
 .bg-3 {
-  /* background-image: url(../public/images/slider/1.jpg); */
+  background-image: url(../public/images/slider/1.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -386,16 +386,16 @@ textarea:focus {
   width: 100%;
 }
 .bg-2 {
-  /* background-image: url(../public/images/slider/2.jpg); */
+  background-image: url(../public/images/slider/2.jpg);
 }
 .bg-3 {
-  /* background-image: url(../public/images/slider/3.jpg); */
+  background-image: url(../public/images/slider/3.jpg);
 }
 /*Home Two | Slider Background Image*/
 .bg-4,
 .bg-5,
 .bg-6 {
-  /* background-image: url(../public/images/slider/4.jpg); */
+  background-image: url(../public/images/slider/4.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -403,16 +403,16 @@ textarea:focus {
   width: 100%;
 }
 .bg-5 {
-  /* background-image: url(../public/images/slider/5.jpg); */
+  background-image: url(../public/images/slider/5.jpg);
 }
 .bg-6 {
-  /* background-image: url(../public/images/slider/6.jpg); */
+  background-image: url(../public/images/slider/6.jpg);
 }
 /*Home Three | Slider Background Image*/
 .bg-7,
 .bg-8,
 .bg-9 {
-  /* background-image: url(../public/images/slider/7.jpg); */
+  background-image: url(../public/images/slider/7.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -420,16 +420,16 @@ textarea:focus {
   width: 100%;
 }
 .bg-8 {
-  /* background-image: url(../public/images/slider/8.jpg); */
+  background-image: url(../public/images/slider/8.jpg);
 }
 .bg-9 {
-  /* background-image: url(../public/images/slider/9.jpg); */
+  background-image: url(../public/images/slider/9.jpg);
 }
 /*Home Four | Slider Background Image*/
 .bg-10,
 .bg-11,
 .bg-12 {
-  /* background-image: url(../public/images/slider/10.jpg); */
+  background-image: url(../public/images/slider/10.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -437,10 +437,10 @@ textarea:focus {
   width: 100%;
 }
 .bg-11 {
-  /* background-image: url(../public/images/slider/11.jpg); */
+  background-image: url(../public/images/slider/11.jpg);
 }
 .bg-12 {
-  /* background-image: url(../public/images/slider/12.jpg); */
+  background-image: url(../public/images/slider/12.jpg);
 }
 /*----------------------------------------*/
 /*  li's Background Variation Set 
@@ -1166,23 +1166,8 @@ textarea:focus {
   .cart-quantity .add-to-cart {
     padding: 13px 40px;
   }
-  /*404 Error Page Area*/
-  .error-text h1 {
-    font-size: 120px;
-  }
-  .error-text h2 {
-    font-size: 28px;
-  }
-  .error-text > p {
-    font-size: 17px;
-  }
-  #search-form {
-    width: 250px;
-  }
-  /*About Us Page*/
-  .about-text-wrap h2 {
-    font-size: 34px;
-  }
+ 
+
   /*Checkout Page*/
   .checkout-form-list {
     margin-bottom: 25px;
@@ -1200,9 +1185,5 @@ textarea:focus {
   /*Blog Details Page*/
   .li-blog-single-item .li-blog-content .li-blog-details h3 {
     font-size: 18px;
-  }
-  /*Contact Page*/
-  h3.contact-page-title {
-    font-size: 25px;
   }
 }

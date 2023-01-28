@@ -15,13 +15,10 @@ function HeaderBottom() {
                       <a href="#">Главная</a>
                     </li>
                     <li>
-                      <a href="#">Shop</a>
+                      <a href="#">Список Покупок</a>
                     </li>
                     <li>
-                      <a href="#">Blog</a>
-                    </li>
-                    <li>
-                      <a href="#">Pages</a>
+                      <a href="#">FAQ</a>
                     </li>
                     <li>
                       <a href="#">О Нас</a>

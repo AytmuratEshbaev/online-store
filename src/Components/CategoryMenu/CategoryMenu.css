@@ -13,7 +13,7 @@
 
 .cat-mega-menu {
   position: static;
-  z-index: 9;
+  z-index: 2023;
   opacity: 1;
   visibility: visible;
   background-color: transparent;
@@ -129,14 +129,14 @@ li.right-menu .cat-mega-menu > li {
   display: block;
   width: 100%;
   border: 1px solid #e7e7e7;
-  z-index: 9;
+  z-index: 2022;
   transition: all 0.77s ease;
   max-height: 0;
   overflow: hidden;
 }
 
 .category-menu-list > ul > li {
-  padding: 10px 0;
+  padding: 10px;
   position: relative;
   background: #fff;
 }
@@ -181,7 +181,7 @@ li.right-menu .cat-mega-menu > li {
   }
   .cat-mega-menu {
     position: static;
-    z-index: 9;
+    z-index: 2023;
     opacity: 1;
     visibility: visible;
     background-color: transparent;
@@ -349,7 +349,7 @@ li.right-menu .cat-mega-menu > li {
     top: 0;
     left: 100%;
     background: #ffffff;
-    z-index: 999;
+    z-index: 2023;
     border: 1px solid #e5e5e5;
     box-shadow: 4px 4px 4px -3px #808080;
     visibility: hidden;

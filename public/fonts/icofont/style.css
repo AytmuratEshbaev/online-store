@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?gltbj8');
-  src:  url('fonts/icomoon.eot?gltbj8#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?gltbj8') format('truetype'),
-    url('fonts/icomoon.woff?gltbj8') format('woff'),
-    url('fonts/icomoon.svg?gltbj8#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?pppvhm');
+  src:  url('fonts/icomoon.eot?pppvhm#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?pppvhm') format('truetype'),
+    url('fonts/icomoon.woff?pppvhm') format('woff'),
+    url('fonts/icomoon.svg?pppvhm#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,57 +25,72 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-cart:before {
-  content: "\e906";
-}
-.icon-menu:before {
-  content: "\e908";
-}
-.icon-chevron-down:before {
-  content: "\e902";
-}
-.icon-log-in:before {
-  content: "\e905";
-}
-.icon-phone:before {
-  content: "\e904";
-}
-.icon-minus:before {
-  content: "\e90b";
-}
-.icon-plus:before {
-  content: "\e90a";
-}
-.icon-th:before {
-  content: "\e909";
-}
-.icon-close:before {
-  content: "\e907";
-}
-.icon-shopping-basket:before {
-  content: "\e903";
-}
 .icon-heart-o:before {
   content: "\e900";
 }
 .icon-search:before {
   content: "\e901";
 }
-.icon-facebook:before {
-  content: "\e90f";
+.icon-chevron-down:before {
+  content: "\e902";
 }
-.icon-facebook-f:before {
-  content: "\e90f";
+.icon-shopping-basket:before {
+  content: "\e904";
 }
-.icon-google:before {
-  content: "\e910";
+.icon-phone1:before {
+  content: "\e905";
 }
-.icon-youtube-play:before {
-  content: "\e90e";
+.icon-log-in:before {
+  content: "\e906";
 }
-.icon-instagram:before {
-  content: "\e90d";
+.icon-cart:before {
+  content: "\e907";
+}
+.icon-close:before {
+  content: "\e908";
+}
+.icon-menu:before {
+  content: "\e909";
+}
+.icon-th:before {
+  content: "\e90a";
+}
+.icon-plus:before {
+  content: "\e90b";
+}
+.icon-minus:before {
+  content: "\e90c";
 }
 .icon-twitter:before {
-  content: "\e90c";
+  content: "\e90d";
+}
+.icon-instagram:before {
+  content: "\e90e";
+}
+.icon-youtube-play:before {
+  content: "\e90f";
+}
+.icon-facebook:before {
+  content: "\e910";
+}
+.icon-google:before {
+  content: "\e911";
+}
+.icon-eye:before {
+  content: "\e916";
+}
+.icon-star:before {
+  content: "\e915";
+}
+.icon-envelope-o:before {
+  content: "\e914";
+}
+.icon-phone:before {
+  content: "\e912";
+}
+.icon-fax:before {
+  content: "\e913";
+}
+.icon-check:before {
+  content: "\e903";
 }

@@ -71,7 +71,7 @@
   transform: scaleY(1);
 }
 .item-icon::before {
-  content: "\e903";
+  content: "\e904";
   position: absolute;
   font-family: "icomoon";
   left: 10px;

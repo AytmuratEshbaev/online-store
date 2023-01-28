@@ -1,21 +1,30 @@
 import "./App.css";
-import HeaderTop from './Components/HeaderTop';
-import HeaderMiddle from "./Components/HeaderMiddle";
-import HeaderBottom from "./Components/HeaderBottom";
-import HeroSection from "./Components/HeroSection";
-import ProductArea from "./Components/ProductArea";
-import Footer from "./Components/Footer";
+import Admin from "./Pages/Admin";
+import { Routes, Route } from "react-router-dom";
+import NotFound from "./Pages/NotFound";
+import Home from "./Pages/HomePage";
+import LoginPage from "./Pages/LoginPage";
+import RegisterPage from "./Pages/RegisterPage";
+import ContactPage from "./Pages/ContactPage";
+import AboutUsPage from "./Pages/AboutUsPage";
+
+
 
 
 function App() {
   return (
     <div className="App">
-      <HeaderTop />
-      <HeaderMiddle />
-      <HeaderBottom />
-      <HeroSection />
-      {/* <ProductArea /> */}
-      <Footer />
+      <div className="body-wrapper">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about-us" element={<AboutUsPage />} />
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+      </div>
     </div>
   );
 }
