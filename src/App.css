@@ -474,67 +474,6 @@
   padding-right: 10px;
 }
 
-/*----------------------------------------*/
-/* 6.2 Li's Frequently Asked Question(FAQ)
-  /*----------------------------------------*/
-.frequently-desc {
-  margin-bottom: 25px;
-}
-
-.frequently-desc h3 {
-  color: #242424;
-  font-size: 14px;
-  font-weight: 400;
-  text-transform: capitalize;
-}
-
-.frequently-desc p {
-  margin: 0;
-  font-size: 13px;
-}
-
-.frequently-accordion .card.actives {
-  border: 1px solid #fed700;
-}
-
-.frequently-accordion .card {
-  border-radius: 0;
-  margin-bottom: 15px;
-}
-
-.frequently-accordion .card-header {
-  padding: 0;
-  margin-bottom: 0;
-  background-color: #f5f5f5;
-  border: 0;
-}
-
-.frequently-accordion .card-header a.collapsed:before,
-.frequently-accordion .card-header a:after {
-  content: "\f067";
-  font-family: fontawesome;
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  color: #b9b9b9;
-}
-
-.frequently-accordion .card-header a:after {
-  content: "\f068 ";
-}
-
-.frequently-accordion .card-header a {
-  display: block;
-  padding: 15px 10px 15px 25px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 400;
-  text-transform: capitalize;
-}
-
-.frequently-accordion .card-header a:hover {
-  color: #fed700 !important;
-}
 
 /*----------------------------------------*/
 /* 6.3 Li's Wishlist Page

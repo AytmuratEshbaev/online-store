@@ -19,7 +19,7 @@ function HeaderMiddle() {
             <Col lg={3}>
               <div className="logo pb-sm-30 pb-xs-30">
                 <a href="index.html">
-                  <img src="images/logo.png" alt="logo" />
+                  <img src="./images/logo.png" alt="logo" />
                 </a>
               </div>
             </Col>

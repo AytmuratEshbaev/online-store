@@ -1,6 +1,7 @@
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import { styled, Theme, CSSObject } from '@mui/material/styles';
+import { styled, Theme, CSSObject, alpha } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
 const drawerWidth = 260;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -72,4 +73,75 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
-export { Drawer, AppBar, DrawerHeader }
+function ListItemButton_Styles(open: boolean) {
+    return (
+        {
+            minHeight: 48,
+            justifyContent: open ? 'initial' : 'center',
+            px: 2,
+            transition: 'all .5s ease',
+            fontWeight: '600',
+            borderRadius: '20px',
+            "&:hover": {
+                backgroundColor: "#fed700",
+                color: '#242424'
+            }
+        }
+    )
+}
+
+const AdminHeader_Styles = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    color: '#242424',
+    borderRadius: "20px",
+    border: "1px solid rgb(238,238,238)"
+}
+
+const Search = styled('div')(({ theme }) => ({
+    position: 'relative',
+    color: '#242424',
+    borderRadius: theme.shape.borderRadius,
+    minWidth: '300px',
+    '&:hover': {
+        backgroundColor: "rgba(254, 215,0, 1)",
+    },
+
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    background: "#fff",
+    border: "2px solid #fed700",
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+        marginLeft: theme.spacing(3),
+        width: 'auto',
+    },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: "#333"
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: 'inherit',
+    '& .MuiInputBase-input': {
+        padding: theme.spacing(1, 1, 1, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('md')]: {
+            width: '20ch',
+        },
+    },
+}));
+
+export { Drawer, AppBar, DrawerHeader, ListItemButton_Styles, AdminHeader_Styles, Search, StyledInputBase, SearchIconWrapper }

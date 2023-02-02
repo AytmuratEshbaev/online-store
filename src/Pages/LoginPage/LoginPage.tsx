@@ -11,11 +11,6 @@ import Login from "../../Components/Login";
 function LoginPage() {
     return (
         <>
-            <header>
-                <HeaderTop />
-                <HeaderMiddle />
-                <HeaderBottom />
-            </header>
             <Breadcrumb />
             <Login />
             <Footer />
