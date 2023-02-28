@@ -9,10 +9,10 @@ import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
 import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
 import ProfileMenu from './ProfileMenu';
 import { Routes, Route, Link, BrowserRouter, Outlet } from 'react-router-dom';
-import User from './User';
-import Category from './Category';
-import Product from './Product';
-import Order from './Order';
+import User from './User/User';
+import Category from './Category/Category';
+import Product from './Products/Products';
+import Order from './Order/Order';
 
 const datas = [{ name: 'User', icon: GroupIcon, to: './user' }, { name: 'Category', icon: InventoryOutlinedIcon, to: "./category" }, { name: 'Product', icon: StorefrontOutlinedIcon, to: './product' }]
 

@@ -6,7 +6,7 @@ import HeroSection from '../../Components/HeroSection';
 import ProductArea from '../../Components/ProductArea';
 
 
-function Home() {
+function HomePage() {
     return (
         <>
             <header>
@@ -22,4 +22,4 @@ function Home() {
 }
 
 
-export default Home;
+export default HomePage;

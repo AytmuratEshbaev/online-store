@@ -1,0 +1,30 @@
+.user__item td:not(:first-child) {
+    min-width: 100px;
+    max-width: 200px;
+}
+
+.user__item td:first-of-type {
+    min-width: 30px;
+    max-width: 50px;
+}
+
+.user__item td {
+    text-align: center;
+}
+
+.users thead th{
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    background-color: #fed700;
+}
+
+.users thead th:not(:first-of-type){
+    min-width: 100px;
+    max-width: 200px;
+}
+
+.users thead th:first-of-type{
+    min-width: 50px;
+    max-width: 100px;
+}
