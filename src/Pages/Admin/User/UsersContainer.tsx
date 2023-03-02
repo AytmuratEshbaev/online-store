@@ -73,7 +73,7 @@ export default function UserDataTable() {
               users &&
               users.map((user: IUser, index: number) =>
                 index >= page * rowsPerPage &&
-                index < (page + 1) * rowsPerPage ? (
+                  index < (page + 1) * rowsPerPage ? (
                   <UserItem key={user.id} user={user} />
                 ) : null
               )

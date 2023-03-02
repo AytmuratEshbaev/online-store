@@ -10,52 +10,78 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import "./User.css";
 import { userAPI } from "../../../services/UserService";
-
+import UserFullDetails from "./UserFullDetails";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { userSlice } from "../../../store/reducers/UserSlice";
+import UpdateUser from "./UpdateUser";
 interface UserItemProps {
   user: IUser;
 }
 
 const UserItem: FC<UserItemProps> = ({ user }) => {
-  const [deleteUser, {}] = userAPI.useDeleteUserMutation();
+  const [deleteUser, { }] = userAPI.useDeleteUserMutation();
+
+  const dispatch = useAppDispatch();
+  const { openMoreInformation, openUpdateModal } = userSlice.actions;
+  const handleClickOpen = () => {
+    dispatch(openMoreInformation(user.id));
+  };
+
+  const handleOpenModal = () => {
+    dispatch(openUpdateModal(user.id))
+  }
+
+  const isOpenMore = useAppSelector((state) => state.userReducer.isOpenMore);
+  const isOpenUpdateModal = useAppSelector((state) => state.userReducer.isOpenUpdateModal);
+  const userIdUpdate = useAppSelector((state) => state.userReducer.userIdUpdate);
+
   return (
-    <TableRow className="user__item">
-      <TableCell> {user.id} </TableCell>
-      <TableCell> {user.username} </TableCell>
-      <TableCell> {user.is_admin ? "admin" : 'user'} </TableCell>
-      <TableCell>
-        <img
-          src={user.user_detail.user_image}
-          alt={user.username}
-          style={{ maxHeight: "100px" }}
-        />
-      </TableCell>
-      <TableCell> {user.phone_numbers[0].phone_number} </TableCell>
-      <TableCell>
-        {user.addresses[0].city + "  " + user.addresses[0].street_address}
-      </TableCell>
-      <TableCell>
-        <ButtonGroup variant="text" aria-label="contained button group">
-          <Tooltip title="More information">
-            <IconButton color="primary">
-              <ReadMoreIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Edit">
-            <IconButton color="secondary">
-              <EditIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Delete">
-            <IconButton
-              style={{ color: "red" }}
-              onClick={() => deleteUser(user)}
-            >
-              <DeleteOutlineOutlinedIcon />
-            </IconButton>
-          </Tooltip>
-        </ButtonGroup>
-      </TableCell>
-    </TableRow>
+    !isOpenMore
+      ?
+      <TableRow className="user__item">
+        <TableCell> {user.id} </TableCell>
+        <TableCell> {user.username} </TableCell>
+        <TableCell> {user.is_admin ? "admin" : 'user'} </TableCell>
+        <TableCell>
+          <img
+            src={user.user_detail.user_image}
+            alt={user.username}
+            style={{ maxHeight: "100px" }}
+          />
+        </TableCell>
+        <TableCell> {user.phone_numbers[0].phone_number} </TableCell>
+        <TableCell>
+          {user.addresses[0].city + "  " + user.addresses[0].street_address}
+        </TableCell>
+        <TableCell>
+          <ButtonGroup variant="text" aria-label="contained button group">
+            <Tooltip title="More information">
+              <IconButton color="primary"
+                onClick={handleClickOpen}
+              >
+                <ReadMoreIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Edit">
+              <IconButton color="secondary"
+              onClick={handleOpenModal}
+              >
+                <EditIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Delete">
+              <IconButton
+                style={{ color: "red" }}
+                onClick={() => deleteUser(user)}
+              >
+                <DeleteOutlineOutlinedIcon />
+              </IconButton>
+            </Tooltip>
+          </ButtonGroup>
+        </TableCell>
+        {isOpenUpdateModal && user.id === userIdUpdate ? <UpdateUser /> : null}
+      </TableRow>
+      : <UserFullDetails />
   );
 };
 

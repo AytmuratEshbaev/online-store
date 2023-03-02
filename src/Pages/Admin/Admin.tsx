@@ -3,22 +3,25 @@ import { Box, Toolbar, List, CssBaseline, Typography, Divider, IconButton, ListI
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import PublicIcon from '@mui/icons-material/Public';
 import { Drawer, AppBar, DrawerHeader, ListItemButton_Styles, AdminHeader_Styles } from './AdminStyles'
 import GroupIcon from '@mui/icons-material/Group';
 import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
 import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
 import ProfileMenu from './ProfileMenu';
-import { Routes, Route, Link, BrowserRouter, Outlet } from 'react-router-dom';
-import User from './User/User';
-import Category from './Category/Category';
-import Product from './Products/Products';
-import Order from './Order/Order';
+import { Link, Outlet, useLocation } from 'react-router-dom';
+import './Admin.css';
 
-const datas = [{ name: 'User', icon: GroupIcon, to: './user' }, { name: 'Category', icon: InventoryOutlinedIcon, to: "./category" }, { name: 'Product', icon: StorefrontOutlinedIcon, to: './product' }]
-
+const datas = [
+    { name: 'User', icon: GroupIcon, to: './user', id: 'user' },
+    { name: 'Country', icon: PublicIcon, to: "./country", id: 'country' },
+    { name: 'Category', icon: InventoryOutlinedIcon, to: "./category", id: 'category' },
+    { name: 'Product', icon: StorefrontOutlinedIcon, to: './product', id: 'product' }]
 
 function Admin() {
     const theme = useTheme();
+
+    const location = useLocation().pathname;
     const [open, setOpen] = React.useState(true);
 
     const handleDrawerOpen = () => {
@@ -54,7 +57,7 @@ function Admin() {
             </AppBar>
             <Drawer variant="permanent" open={open}>
                 <DrawerHeader><img
-                    src='./images/logo.png'
+                    src='.././images/logo.png'
                     alt="Logo"
                 />
                     <IconButton onClick={handleDrawerClose}>
@@ -66,10 +69,13 @@ function Admin() {
                 <List sx={{ backgroundColor: '#fff', height: '100%', borderRadius: '20px', px: 2 }}>
                     {datas.map((data) => (
                         <ListItem key={data.name} disablePadding sx={{
-                            display: 'block', my: 1
-                        }}>
+                            display: 'block', my: 1, borderRadius: '20px'
+                        }}
+                        className={`${`/admin/${data.id}` === location ? 'tab active' : null}`}
+                        >
                             <Link to={data.to}>
-                                <ListItemButton sx={ListItemButton_Styles(open)}>
+                                <ListItemButton sx={ListItemButton_Styles(open)}
+                                >
                                     <ListItemIcon
                                         sx={{
                                             minWidth: 0,

@@ -1,0 +1,28 @@
+.countries__container table tr th {
+    background-color: #fed700;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+}
+
+.countries__container td {
+    text-align: center;
+}
+
+.countries__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.countries__container .table__container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.countries__container .table__container table {
+    max-width: 500px;
+}

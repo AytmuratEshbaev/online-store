@@ -12,19 +12,49 @@
     text-align: center;
 }
 
-.users thead th{
+.users thead th {
     color: #333;
     font-weight: bold;
     text-align: center;
     background-color: #fed700;
 }
 
-.users thead th:not(:first-of-type){
+.users thead th:not(:first-of-type) {
     min-width: 100px;
     max-width: 200px;
 }
 
-.users thead th:first-of-type{
+.users thead th:first-of-type {
     min-width: 50px;
     max-width: 100px;
 }
+
+.user__info .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px;
+}
+
+.user__info .wrapper {
+    flex-grow: 1;
+}
+
+.user__info .user__img {
+    max-width: 400px;
+    min-width: 300px;
+    margin-left: 50px;
+    max-height: 400px;
+}
+
+.user__img img {
+    width: 100%;
+}
+
+
+.user__info .info-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+

@@ -8,7 +8,6 @@ import UserDataTable from "./UsersContainer";
 import UserModal from "./UserModal";
 import { useAppDispatch } from "../../../hooks/redux";
 import { userSlice } from "../../../store/reducers/UserSlice";
-import { IUser } from "../../../models/IUser";
 
 function User() {
   const dispatch = useAppDispatch();

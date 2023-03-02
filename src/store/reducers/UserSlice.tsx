@@ -1,14 +1,19 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { INewUser } from "../../models/INewUser";
+import { createSlice } from "@reduxjs/toolkit";
 
 interface UserState {
   isOpen: boolean;
-  // newUser: INewUser;
+  isOpenMore: boolean;
+  userIdInfo: number;
+  isOpenUpdateModal: boolean;
+  userIdUpdate: number;
 }
 
 const initialState: UserState = {
   isOpen: false,
-  // newUser: initialNewUser,
+  isOpenMore: false,
+  userIdInfo: -1,
+  isOpenUpdateModal: false,
+  userIdUpdate: -1,
 };
 
 export const userSlice = createSlice({
@@ -20,6 +25,22 @@ export const userSlice = createSlice({
     },
     closeModal(state) {
       state.isOpen = false;
+    },
+    openMoreInformation(state, action) {
+      state.isOpenMore = true;
+      state.userIdInfo = action.payload;
+    },
+    closeMoreInformation(state) {
+      state.isOpenMore = false;
+      state.userIdInfo = -1;
+    },
+    openUpdateModal(state, action) {
+      state.isOpenUpdateModal = true;
+      state.userIdUpdate = action.payload;
+    },
+    closeUpdateModal(state) {
+      state.isOpenUpdateModal = false;
+      state.userIdUpdate = -1;
     },
   },
 });

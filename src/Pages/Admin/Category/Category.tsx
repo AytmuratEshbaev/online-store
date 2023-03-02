@@ -1,8 +1,11 @@
+import CategoryContainer from "./CategoryContainer";
 
 
 
 function Category() {
-    return (<div>Category Page</div>)
+    return (
+        <CategoryContainer />
+    )
 }
 
 export default Category;
