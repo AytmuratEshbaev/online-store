@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import SingleProduct from "../SingleProduct";
 import "./ProductArea.css";
 import Slider from "react-slick";
-
+import uuid from 'react-uuid';
 
 const products = {
   new: [
@@ -300,25 +300,25 @@ function ProductArea() {
             <Row>
               <Slider className="product-active" {...settings}>
                 {products.new.map((product: any) => (
-                  <SingleProduct product={product} />
+                  <SingleProduct product={product} key={uuid()} />
                 ))}
               </Slider>
             </Row>
-          </div>  
+          </div>
           <div id="li-bestseller-product" className="tab-pane" role="tabpanel">
-          <Row>
+            <Row>
               <Slider className="product-active" {...settings}>
                 {products.new.map((product: any) => (
-                  <SingleProduct product={product} />
+                  <SingleProduct product={product} key={uuid()} />
                 ))}
               </Slider>
             </Row>
           </div>
           <div id="li-featured-product" className="tab-pane" role="tabpanel">
-          <Row>
+            <Row>
               <Slider className="product-active" {...settings}>
                 {products.new.map((product: any) => (
-                  <SingleProduct product={product} />
+                  <SingleProduct product={product} key={uuid()} />
                 ))}
               </Slider>
             </Row>
