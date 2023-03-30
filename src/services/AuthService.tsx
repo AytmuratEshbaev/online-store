@@ -1,26 +1,29 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { AuthUserData } from '../models/IAuth';
+import { RootState } from '../store/store';
+
+
 
 export const authAPI = createApi({
   reducerPath: 'authAPI',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://ecommerce.icedev.uz/',
+    credentials: 'include',
+    prepareHeaders: (headers, { getState }) => {
+        const auth = (getState() as RootState).auth;
+        let token = auth.token;
+        if (token) {
+            headers.set("authorization", `Bearer ${token}`)
+        }
+        return headers
+    }
   }),
-  tagTypes: ['auth'],
   endpoints: (build) => ({
     userLogin: build.mutation({
-      query(data) {
-        const body = `${encodeURIComponent('username')}=${encodeURIComponent(data.username)}&&${encodeURIComponent('password')}=${encodeURIComponent(data.password)}`
-        return {
-          url: 'token',
-          method: 'POST',
-          body,
-          headers: {
-            'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
-          }
-        }
-      },
-      invalidatesTags: ['auth'],
+      query: (credentials) => ({
+        url: '/token',
+        method: 'POST',
+        body: { ...credentials }
+    })
     }),
   }),
 });
