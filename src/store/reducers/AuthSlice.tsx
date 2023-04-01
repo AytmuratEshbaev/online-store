@@ -1,33 +1,33 @@
-interface initialType {
-    user: string | null;
-    token: string | null;
-}
+import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction } from "@reduxjs/toolkit";
+import { Cookies } from "react-cookie";
 
+
+type initialType = {
+  token: string
+}
 const initialState: initialType = {
-    user: null,
-    token: null
+  token: ""
 }
 
-import { createSlice } from "@reduxjs/toolkit"
-
-const authSlice = createSlice({
-    name: 'auth',
-    initialState,
-    reducers: {
-        setCredentials: (state, action) => {
-            const { user, accessToken } = action.payload
-            state.user = user
-            state.token = accessToken
-        },
-        logOut: (state) => {
-            state.user = null
-            state.token = null
-        }
+export const authSlice = createSlice({
+  name: 'authSlice',
+  initialState,
+  reducers: {
+    login: (state, action: PayloadAction<string>) => {
+      const cookie = new Cookies()
+      if (cookie.get('token') === undefined) {
+        state.token = action.payload
+        cookie.set('token', state.token)
+      } else {
+        state.token = cookie.get('token')
+      }
     },
+    logout: (state) => {
+      const cookie = new Cookies()
+      cookie.remove('token')
+      state.token = ''
+    }
+  }
 })
-
-export const { setCredentials, logOut } = authSlice.actions
-
 export default authSlice.reducer;
-
-export const selectCurrentToken = (state:any) => state.auth.token

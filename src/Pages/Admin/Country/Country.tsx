@@ -5,7 +5,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Search, StyledInputBase, SearchIconWrapper } from "../AdminStyles";
 import Typography from "@mui/material/Typography";
 import { useAppDispatch } from "../../../hooks/redux";
-import { userSlice } from "../../../store/reducers/UserSlice";
 import CountryContainer from "./CountriesContainer";
 import './Country.css';
 import { countrySlice } from '../../../store/reducers/CountrySlice';

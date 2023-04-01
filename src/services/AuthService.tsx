@@ -1,33 +1,42 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { RootState } from '../store/store';
-
-
-
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
+import { authSlice } from "../store/reducers/AuthSlice";
+type IUser = {
+  username: string,
+  password: string
+}
+type IToken = {
+  access_token: string
+}
 export const authAPI = createApi({
-  reducerPath: 'authAPI',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://ecommerce.icedev.uz/',
-    credentials: 'include',
-    prepareHeaders: (headers, { getState }) => {
-        const auth = (getState() as RootState).auth;
-        let token = auth.token;
-        if (token) {
-            headers.set("authorization", `Bearer ${token}`)
+  reducerPath: 'authUser',
+  baseQuery: fetchBaseQuery({ baseUrl: "https://ecommerce.icedev.uz/" }),
+  tagTypes: ['login'],
+  endpoints: builder => ({
+    signIn: builder.mutation<IToken, IUser>({
+      query(data) {
+        const body = encodeURIComponent('username') + '=' + encodeURIComponent(data.username)
+          + '&&' +
+          encodeURIComponent('password') + '=' + encodeURIComponent(data.password)
+        return {
+          url: 'token',
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
+          },
+          body,
         }
-        return headers
-    }
-  }),
-  endpoints: (build) => ({
-    userLogin: build.mutation({
-      query: (credentials) => ({
-        url: '/token',
-        method: 'POST',
-        body: { ...credentials }
+      },
+      async onQueryStarted(data, { dispatch, queryFulfilled, getState }) {
+        const { data: accessToken } = await queryFulfilled
+        try {
+          dispatch(authSlice.actions.login(accessToken.access_token))
+        } catch (e) {
+          console.log(e);
+        }
+      },
+      invalidatesTags: ['login']
     })
-    }),
-  }),
-});
+  })
+})
 
-export const {
-  useUserLoginMutation
-} = authAPI;
+export const { useSignInMutation } = authAPI;

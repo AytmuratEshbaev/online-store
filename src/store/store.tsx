@@ -7,7 +7,6 @@ import { categoryAPI } from "../services/CategoryService";
 import { authSlice } from './reducers/AuthSlice';
 import { authAPI } from "../services/AuthService";
 
-
 const rootReducer = combineReducers({
   userReducer,
   countryReducer,

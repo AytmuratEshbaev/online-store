@@ -26,7 +26,7 @@ function HeaderTop() {
                   <a href="#">Checkout</a>
                 </li>
                 <li>
-                  <a href="#">Войти</a>
+                  <a href="/login">Войти</a>
                 </li>
               </ul>
             </div>
