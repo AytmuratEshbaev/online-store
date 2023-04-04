@@ -16,6 +16,7 @@ import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { IUserFormInput } from "../../../models/IUserFormInput";
 import { userAPI } from "../../../services/UserService";
+import { toast, ToastContainer } from 'react-toastify';
 
 const UserModal: FC = () => {
   const { data: countries, isLoading } =
@@ -29,7 +30,7 @@ const UserModal: FC = () => {
   };
   const isOpen = useAppSelector((state) => state.userReducer.isOpen);
 
-  const [createUser, {}] = userAPI.useCreateUserMutation();
+  const [createUser, { }] = userAPI.useCreateUserMutation();
 
   const { register, handleSubmit, reset } = useForm<IUserFormInput>();
 
@@ -63,12 +64,22 @@ const UserModal: FC = () => {
         country_id: data.country_id,
       },
     };
-    await createUser(newUser);
-  };
+    await createUser(newUser)
+      .unwrap()
+      .then(response => {
+        toast.success("User added successfully!", { position: toast.POSITION.TOP_RIGHT, toastId: 'user' });
+      })
+      .catch(error => toast.error(`${error.data.detail}`, {
+        position: toast.POSITION.TOP_RIGHT,
+        toastId: 'user'
+      }))
+  }
+
 
   return (
     <Dialog open={isOpen} onClose={handleClose} maxWidth="md">
       <DialogTitle sx={{ pb: 0 }}>New user</DialogTitle>
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <DialogContent>
           <Box
@@ -178,7 +189,7 @@ const UserModal: FC = () => {
         </DialogActions>
       </form>
     </Dialog>
-  );
+  )
 };
 
 export default UserModal;

@@ -4,10 +4,10 @@ import HeaderTop from '../../Components/HeaderTop';
 import Footer from '../../Components/Footer';
 import HeroSection from '../../Components/HeroSection';
 import ProductArea from '../../Components/ProductArea';
-
+import './HomePage.css';
 
 function HomePage() {
-    return (
+   return (
         <>
             <header>
                 <HeaderTop />

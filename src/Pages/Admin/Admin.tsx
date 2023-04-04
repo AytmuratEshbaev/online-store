@@ -71,7 +71,7 @@ function Admin() {
                         <ListItem key={data.name} disablePadding sx={{
                             display: 'block', my: 1, borderRadius: '20px'
                         }}
-                        className={`${`/admin/${data.id}` === location ? 'tab active' : null}`}
+                            className={`${`/admin/${data.id}` === location ? 'tab active' : null}`}
                         >
                             <Link to={data.to}>
                                 <ListItemButton sx={ListItemButton_Styles(open)}

@@ -11,3 +11,8 @@ export interface ICategory {
         id: number;
     } | null;
 }
+
+export interface INewCategory {
+    name: string;
+    parent_category_id: number | null
+}

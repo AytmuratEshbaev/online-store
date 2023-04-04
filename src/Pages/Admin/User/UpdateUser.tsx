@@ -14,6 +14,7 @@ import { SubmitHandler } from "react-hook-form/dist/types";
 import { IUserFormInput } from "../../../models/IUserFormInput";
 import { userAPI } from "../../../services/UserService";
 import { IUser } from "../../../models/IUser";
+import { toast } from 'react-toastify';
 
 const UpdateUser: FC = () => {
   const userID = useAppSelector((state) => state.userReducer.userIdUpdate);
@@ -52,7 +53,15 @@ const UpdateUser: FC = () => {
         phone_numbers: user?.phone_numbers,
         addresses: user?.addresses
       }
-      await updateUser(updatingUser);
+      await updateUser(updatingUser)
+        .unwrap()
+        .then(response => {
+          toast.success("User edited successfully!", { position: toast.POSITION.TOP_RIGHT, toastId: 'user' });
+        })
+        .catch(error => toast.error(`${error.data.detail}`, {
+          position: toast.POSITION.TOP_RIGHT,
+          toastId: 'user'
+        }))
     }
   };
 

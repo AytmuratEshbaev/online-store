@@ -22,7 +22,6 @@ interface Column {
 }
 
 const columns: readonly Column[] = [
-  { id: "id", label: "Id" },
   { id: "username", label: "Username" },
   { id: "role", label: "Role" },
   { id: "image", label: "Image" },

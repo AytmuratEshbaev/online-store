@@ -11,7 +11,7 @@ import { countryAPI } from '../../../services/CountryService';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import UpdateCountryModal from './UpdateCountry';
 import { countrySlice } from '../../../store/reducers/CountrySlice';
-
+import {toast} from 'react-toastify';
 
 interface CountryItemProps {
     country: ICountry;
@@ -28,9 +28,20 @@ const CountryItem: FC<CountryItemProps> = ({ country }) => {
     const handleOpenModal = () => {
         dispatch(openUpdateModal(country.id))
       }
+
+      const removeCountry = async (user: ICountry) => {
+        await deleteCountry(user)
+          .unwrap()
+          .then(response => {
+            toast.success("Country remove successfully!", { position: toast.POSITION.TOP_RIGHT, toastId: 'country' });
+          })
+          .catch(error => toast.error(`${error.data.detail}`, {
+            position: toast.POSITION.TOP_RIGHT,
+            toastId: 'country'
+          }))
+      }
     return (
         <TableRow hover role="checkbox" tabIndex={-1} >
-            <TableCell>{country.id}</TableCell>
             <TableCell>{country.country_name}</TableCell>
             <TableCell className='control'>
                 <ButtonGroup variant="text" aria-label="contained button group">
@@ -43,7 +54,7 @@ const CountryItem: FC<CountryItemProps> = ({ country }) => {
                     <Tooltip title="Delete">
                         <IconButton
                             style={{ color: "red" }}
-                            onClick={() => deleteCountry(country)}
+                            onClick={() => removeCountry(country)}
                         >
                             <DeleteOutlineOutlinedIcon />
                         </IconButton>

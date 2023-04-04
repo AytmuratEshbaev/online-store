@@ -14,6 +14,8 @@ import UserFullDetails from "./UserFullDetails";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { userSlice } from "../../../store/reducers/UserSlice";
 import UpdateUser from "./UpdateUser";
+import { toast } from 'react-toastify';
+
 interface UserItemProps {
   user: IUser;
 }
@@ -30,7 +32,18 @@ const UserItem: FC<UserItemProps> = ({ user }) => {
   const handleOpenModal = () => {
     dispatch(openUpdateModal(user.id))
   }
-
+  const removeUser = async (user: IUser) => {
+    await deleteUser(user)
+      .unwrap()
+      .then(response => {
+        toast.success("User remove successfully!", { position: toast.POSITION.TOP_RIGHT, toastId: 'user' });
+      })
+      .catch(error => toast.error(`${error.data.detail}`, {
+        position: toast.POSITION.TOP_RIGHT,
+        toastId: 'user'
+      }))
+  }
+  
   const isOpenMore = useAppSelector((state) => state.userReducer.isOpenMore);
   const isOpenUpdateModal = useAppSelector((state) => state.userReducer.isOpenUpdateModal);
   const userIdUpdate = useAppSelector((state) => state.userReducer.userIdUpdate);
@@ -39,7 +52,6 @@ const UserItem: FC<UserItemProps> = ({ user }) => {
     !isOpenMore
       ?
       <TableRow className="user__item">
-        <TableCell> {user.id} </TableCell>
         <TableCell> {user.username} </TableCell>
         <TableCell> {user.is_admin ? "admin" : 'user'} </TableCell>
         <TableCell>
@@ -64,7 +76,7 @@ const UserItem: FC<UserItemProps> = ({ user }) => {
             </Tooltip>
             <Tooltip title="Edit">
               <IconButton color="secondary"
-              onClick={handleOpenModal}
+                onClick={handleOpenModal}
               >
                 <EditIcon />
               </IconButton>
@@ -72,7 +84,7 @@ const UserItem: FC<UserItemProps> = ({ user }) => {
             <Tooltip title="Delete">
               <IconButton
                 style={{ color: "red" }}
-                onClick={() => deleteUser(user)}
+                onClick={() => removeUser(user)}
               >
                 <DeleteOutlineOutlinedIcon />
               </IconButton>

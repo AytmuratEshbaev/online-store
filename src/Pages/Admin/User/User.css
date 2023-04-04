@@ -1,12 +1,9 @@
-.user__item td:not(:first-child) {
+.user__item td {
     min-width: 100px;
     max-width: 200px;
 }
 
-.user__item td:first-of-type {
-    min-width: 30px;
-    max-width: 50px;
-}
+
 
 .user__item td {
     text-align: center;

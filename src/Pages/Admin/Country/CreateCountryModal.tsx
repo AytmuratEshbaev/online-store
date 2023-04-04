@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { INewCountry } from '../../../models/ICountry';
 import { countryAPI } from '../../../services/CountryService';
-
+import { toast } from 'react-toastify';
 interface ICountryForm {
     country_name: string
 }
@@ -41,7 +41,10 @@ export default function CreateCountryModal() {
         const newCountry: INewCountry = {
             country_name: data.country_name
         };
-        await createCountry(newCountry);
+        await createCountry(newCountry)
+            .unwrap()
+            .then(response => toast.success('Country added successfully!', { position: toast.POSITION.TOP_RIGHT, toastId: 'country' }))
+            .catch((error) => toast.error(`${error.data.detail}`, { position: toast.POSITION.TOP_RIGHT, toastId: 'country' }))
     };
     return (
         <div>

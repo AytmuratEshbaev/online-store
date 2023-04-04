@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { ICategory } from "../models/ICategory";
+import { ICategory, INewCategory } from "../models/ICategory";
 
 export const categoryAPI = createApi({
   reducerPath: "categoryAPI",
@@ -7,28 +7,19 @@ export const categoryAPI = createApi({
   tagTypes: ["Category"],
   endpoints: (build) => ({
     fetchAllCategories: build.query<ICategory[], number>({
-      query: (limit: number = 5) => ({
+      query: () => ({
         url: "/categories",
-        params: {
-          _limit: limit
-        }
       }),
       providesTags: result => ["Category"]
     }),
-    // fetchSingleCountry: build.query<ICountry, number>({
-    //   query: (id) => ({
-    //     url: `/countries/${id}`
-    //   }),
-    //   providesTags: result => ["Country"]
-    // }),
-    // createCountry: build.mutation<INewCountry, INewCountry>({
-    //   query: (country) => ({
-    //     url: "/countries",
-    //     method: "POST",
-    //     body: country
-    //   }),
-    //   invalidatesTags: ["Country"]
-    // }),
+    createCategory: build.mutation<INewCategory, INewCategory>({
+      query: (country) => ({
+        url: "/categories",
+        method: "POST",
+        body: country
+      }),
+      invalidatesTags: ["Category"]
+    }),
     // deleteCountry: build.mutation<ICountry, ICountry>({
     //   query: (country) => ({
     //     url: `/countries/${country.id}`,

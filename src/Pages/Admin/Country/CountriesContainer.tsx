@@ -10,6 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import { countryAPI } from '../../../services/CountryService';
 import CircularProgress from '@mui/material/CircularProgress';
 import CountryItem from './CountryItem';
+import {toast} from 'react-toastify';
 
 export default function CountryContainer() {
     const [page, setPage] = React.useState(0);
@@ -20,7 +21,7 @@ export default function CountryContainer() {
     };
 
     const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setRowsPerPage(+event.target.value);
+        setRowsPerPage(1);
         setPage(0);
     };
 
@@ -33,7 +34,6 @@ export default function CountryContainer() {
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>ID</TableCell>
                             <TableCell>Country name</TableCell>
                             <TableCell>Control</TableCell>
                         </TableRow>

@@ -11,14 +11,16 @@ import jwtDecode from 'jwt-decode';
 
 function Login() {
     const navigate = useNavigate();
-    const [login, { isError, isSuccess }] = useSignInMutation();
+    const [login, { isError}] = useSignInMutation();
     const { register, handleSubmit } = useForm<AuthUserData>();
 
 
     const onSubmit: SubmitHandler<AuthUserData> = async (data) => await login(data)
         .unwrap()
         .then(response => {
-            toast.success(`Добро пожаловать ${data.username}`)
+            toast.success(`Добро пожаловать ${data.username}`,{
+                position: toast.POSITION.TOP_RIGHT
+            })
             const decode: {
                 access_token: string,
                 sub: string,
@@ -30,12 +32,14 @@ function Login() {
                 navigate('/', { replace: true })
             }
         })
-        .catch(error => toast.error(`${error.data.detail}`))
-
+        .catch(error => toast.error(`${error.data.detail}`,{
+            position: toast.POSITION.TOP_RIGHT
+        }))
 
     return (
         <div className="page-section">
             <Container>
+                <ToastContainer />
                 <Row className="login-register">
                     <Col sm={12} md={12} xs={12} lg={8}>
                         <form onSubmit={handleSubmit(onSubmit)}>

@@ -8,6 +8,7 @@ import UserDataTable from "./UsersContainer";
 import UserModal from "./UserModal";
 import { useAppDispatch } from "../../../hooks/redux";
 import { userSlice } from "../../../store/reducers/UserSlice";
+import { ToastContainer } from "react-toastify";
 
 function User() {
   const dispatch = useAppDispatch();
@@ -18,6 +19,7 @@ function User() {
   
   return (
     <div className="users-admin">
+      <ToastContainer containerId='user' />
       <Typography variant="h5" component="h1" p={2}>
         {" "}
         Users{" "}
@@ -35,7 +37,7 @@ function User() {
             <SearchIcon />
           </SearchIconWrapper>
           <StyledInputBase
-            placeholder="Search…"
+            placeholder="Search by username"
             inputProps={{ "aria-label": "search" }}
           />
         </Search>

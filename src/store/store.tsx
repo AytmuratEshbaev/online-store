@@ -3,6 +3,7 @@ import { countryAPI } from "../services/CountryService";
 import { userAPI } from "../services/UserService";
 import userReducer from './reducers/UserSlice';
 import countryReducer from './reducers/CountrySlice';
+import categoryReducer from './reducers/CategorySlice';
 import { categoryAPI } from "../services/CategoryService";
 import { authSlice } from './reducers/AuthSlice';
 import { authAPI } from "../services/AuthService";
@@ -10,6 +11,7 @@ import { authAPI } from "../services/AuthService";
 const rootReducer = combineReducers({
   userReducer,
   countryReducer,
+  categoryReducer,
   auth: authSlice.reducer,
   [userAPI.reducerPath]: userAPI.reducer,
   [countryAPI.reducerPath]: countryAPI.reducer,

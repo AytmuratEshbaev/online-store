@@ -11,6 +11,7 @@ import { SubmitHandler } from "react-hook-form/dist/types";
 import { ICountry } from '../../../models/ICountry';
 import { countryAPI } from '../../../services/CountryService';
 import CircularProgress from '@mui/material/CircularProgress';
+import { toast } from 'react-toastify';
 
 interface ICountryForm {
     country_name: string
@@ -47,7 +48,10 @@ export default function UpdateCountryModal() {
                 country_name: data.country_name,
                 id: country.id
             }
-            await updateCountry(updatingData);
+            await updateCountry(updatingData)
+                .unwrap()
+                .then(response => toast.success('Country edited successfully!', { position: toast.POSITION.TOP_RIGHT, toastId: 'country' }))
+                .catch((error) => toast.error(`${error.data.detail}`, { position: toast.POSITION.TOP_RIGHT, toastId: 'country' }))
         }
     };
 
@@ -61,7 +65,7 @@ export default function UpdateCountryModal() {
                             sx={{ position: "absolute", top: "50%", left: "50%", transform: 'translate(-50%,-50%)' }}
                         />
                         : <>
-                            <DialogTitle>New Country</DialogTitle>
+                            <DialogTitle>Update Country</DialogTitle>
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <DialogContent>
                                     <TextField

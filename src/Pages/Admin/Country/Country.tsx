@@ -9,6 +9,7 @@ import CountryContainer from "./CountriesContainer";
 import './Country.css';
 import { countrySlice } from '../../../store/reducers/CountrySlice';
 import CreateCountryModal from "./CreateCountryModal";
+import { ToastContainer } from "react-toastify";
 
 function Country() {
     const dispatch = useAppDispatch();
@@ -21,6 +22,7 @@ function Country() {
 
     return (
         <div className="country-admin">
+            <ToastContainer containerId='country'/>
             <Typography variant="h5" component="h1" p={2}>Countries</Typography>
             <Stack
                 direction="row"
