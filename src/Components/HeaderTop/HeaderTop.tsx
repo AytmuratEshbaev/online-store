@@ -46,6 +46,7 @@ function HeaderTop() {
       sub: string,
       is_admin: number
     } = jwtDecode(cookie.get('token'));
+    
     return (
       <Box>
         <Tooltip title="Open settings">

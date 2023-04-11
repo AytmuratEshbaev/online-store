@@ -16,7 +16,7 @@ import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { IUserFormInput } from "../../../models/IUserFormInput";
 import { userAPI } from "../../../services/UserService";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const UserModal: FC = () => {
   const { data: countries, isLoading } =

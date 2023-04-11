@@ -1,12 +1,13 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { countryAPI } from "../services/CountryService";
 import { userAPI } from "../services/UserService";
+import { categoryAPI } from "../services/CategoryService";
+import { authAPI } from "../services/AuthService";
+import { productAPI } from "../services/ProductService";
 import userReducer from './reducers/UserSlice';
 import countryReducer from './reducers/CountrySlice';
 import categoryReducer from './reducers/CategorySlice';
-import { categoryAPI } from "../services/CategoryService";
 import { authSlice } from './reducers/AuthSlice';
-import { authAPI } from "../services/AuthService";
 
 const rootReducer = combineReducers({
   userReducer,
@@ -16,14 +17,15 @@ const rootReducer = combineReducers({
   [userAPI.reducerPath]: userAPI.reducer,
   [countryAPI.reducerPath]: countryAPI.reducer,
   [categoryAPI.reducerPath]: categoryAPI.reducer,
-  [authAPI.reducerPath]: authAPI.reducer
+  [authAPI.reducerPath]: authAPI.reducer,
+  [productAPI.reducerPath]: productAPI.reducer
 });
 
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(userAPI.middleware, countryAPI.middleware, categoryAPI.middleware, authAPI.middleware),
+      getDefaultMiddleware().concat(userAPI.middleware, countryAPI.middleware, categoryAPI.middleware, authAPI.middleware, productAPI.middleware),
   });
 };
 

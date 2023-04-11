@@ -1,0 +1,18 @@
+
+.products-container table tr td {
+    max-width: 200px;
+}
+
+.products-container img{
+    width: 100%;
+}
+
+.products-container table thead th{
+    background-color: #fed700;
+    font-weight: bold;
+    text-align: center;
+}
+
+.products-container table td{
+    text-align: center;
+}

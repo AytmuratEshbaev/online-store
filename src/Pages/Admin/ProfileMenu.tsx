@@ -3,11 +3,17 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useNavigate } from "react-router-dom";
+import { authSlice } from "../../store/reducers/AuthSlice";
+import { useAppDispatch } from '../../hooks/redux';
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = [{
+  text: 'Profile',
+  href: '/'
+}];
 
 function ProfileMenu() {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -15,17 +21,25 @@ function ProfileMenu() {
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
+  const navigate = useNavigate();
 
+  const dispatch = useAppDispatch();
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
 
+  const handleLogout = () => {
+    setAnchorElUser(null);
+    dispatch(authSlice.actions.logout());
+    navigate('../login')
+  }
+
   return (
     <Box>
       <Tooltip title="Open settings">
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+          <AccountCircleIcon sx={{ fontSize: '30px' }} />
         </IconButton>
       </Tooltip>
       <Menu
@@ -45,10 +59,15 @@ function ProfileMenu() {
         onClose={handleCloseUserMenu}
       >
         {settings.map((setting) => (
-          <MenuItem key={setting} onClick={handleCloseUserMenu}>
-            <Typography textAlign="center">{setting}</Typography>
+          <MenuItem key={setting.text} onClick={handleCloseUserMenu}>
+            <a href={setting.href}>
+              <Typography textAlign="center">{setting.text}</Typography>
+            </a>
           </MenuItem>
         ))}
+        <MenuItem onClick={handleLogout}>
+          <Typography textAlign="center">Выйти</Typography>
+        </MenuItem>
       </Menu>
     </Box>
   );

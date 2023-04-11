@@ -20,22 +20,6 @@ export const categoryAPI = createApi({
       }),
       invalidatesTags: ["Category"]
     }),
-    // deleteCountry: build.mutation<ICountry, ICountry>({
-    //   query: (country) => ({
-    //     url: `/countries/${country.id}`,
-    //     method: "DELETE",
-    //   }),
-    //   invalidatesTags: ["Country"]
-    // }),
-    // updateCountry: build.mutation<ICountry, ICountry>({
-    //   query: (country) => ({
-    //     url: `/countries/${country.id}`,
-    //     method: "PUT",
-    //     body: {
-    //       country_name: country.country_name
-    //     }
-    //   }),
-    //   invalidatesTags: ["Country"]
-    // }),
+   
   }),
 });

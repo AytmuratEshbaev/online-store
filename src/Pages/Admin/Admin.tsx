@@ -11,6 +11,10 @@ import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
 import ProfileMenu from './ProfileMenu';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import './Admin.css';
+import jwtDecode from "jwt-decode";
+import { Cookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+
 
 const datas = [
     { name: 'User', icon: GroupIcon, to: './user', id: 'user' },
@@ -20,7 +24,16 @@ const datas = [
 
 function Admin() {
     const theme = useTheme();
-
+    const cookie = new Cookies()
+    const navigate = useNavigate();
+    React.useEffect(() => {
+        const decode: {
+            access_token: string,
+            sub: string,
+            is_admin: number
+        } = jwtDecode(cookie.get('token'));
+        if (!cookie.get('token') || decode.is_admin !== 1) navigate('../');
+    }, [])
     const location = useLocation().pathname;
     const [open, setOpen] = React.useState(true);
 
@@ -31,6 +44,7 @@ function Admin() {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
 
     return (
         <Box sx={{ display: 'flex', backgroundColor: "rgb(247,247,247)" }}>
