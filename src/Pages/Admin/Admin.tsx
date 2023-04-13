@@ -4,6 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import PublicIcon from '@mui/icons-material/Public';
+import PhoneMissedRoundedIcon from '@mui/icons-material/PhoneMissedRounded';
 import { Drawer, AppBar, DrawerHeader, ListItemButton_Styles, AdminHeader_Styles } from './AdminStyles'
 import GroupIcon from '@mui/icons-material/Group';
 import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
@@ -11,29 +12,17 @@ import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
 import ProfileMenu from './ProfileMenu';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import './Admin.css';
-import jwtDecode from "jwt-decode";
-import { Cookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
 
 
 const datas = [
-    { name: 'User', icon: GroupIcon, to: './user', id: 'user' },
-    { name: 'Country', icon: PublicIcon, to: "./country", id: 'country' },
-    { name: 'Category', icon: InventoryOutlinedIcon, to: "./category", id: 'category' },
-    { name: 'Product', icon: StorefrontOutlinedIcon, to: './product', id: 'product' }]
+    { name: 'Пользователи', icon: GroupIcon, to: './user', id: 'user' },
+    { name: 'Страны', icon: PublicIcon, to: "./country", id: 'country' },
+    { name: 'Категории', icon: InventoryOutlinedIcon, to: "./category", id: 'category' },
+    { name: 'Продукты', icon: StorefrontOutlinedIcon, to: './product', id: 'product' },
+    { name: 'Звонки', icon: PhoneMissedRoundedIcon, to: './call', id: 'call' }]
 
 function Admin() {
     const theme = useTheme();
-    const cookie = new Cookies()
-    const navigate = useNavigate();
-    React.useEffect(() => {
-        const decode: {
-            access_token: string,
-            sub: string,
-            is_admin: number
-        } = jwtDecode(cookie.get('token'));
-        if (!cookie.get('token') || decode.is_admin !== 1) navigate('../');
-    }, [])
     const location = useLocation().pathname;
     const [open, setOpen] = React.useState(true);
 
@@ -64,7 +53,7 @@ function Admin() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h5" noWrap component="div" sx={{ flexGrow: '1' }}>
-                        Dashboard
+                     Админ панель
                     </Typography>
                     <ProfileMenu />
                 </Toolbar>

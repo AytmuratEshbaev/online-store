@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.formbold-mb-5 {
+  margin-bottom: 20px;
+}
+
+.formbold-pt-3 {
+  padding-top: 12px;
+}
+
+.formbold-main-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px;
+  position: absolute;
+
+}
+
+.formbold-form-wrapper {
+  margin: 0 auto;
+  width: 350px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  display: none;
+  position: fixed;
+  right: 50px;
+  top: 50px;
+  z-index: 100000;
+
+}
+
+.formbold-form-wrapper.active {
+  display: block;
+}
+
+.formbold-form-label {
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  color: #07074d;
+  margin-bottom: 12px;
+}
+
+.formbold-form-label-2 {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.formbold-form-input {
+  width: 100%;
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  font-weight: 500;
+  font-size: 16px;
+  color: #6b7280;
+  outline: none;
+  resize: none;
+}
+
+.formbold-form-input:focus {
+  border-color: #000;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formbold-btn {
+  text-align: center;
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 14px 32px;
+  border: none;
+  font-weight: 600;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.formbold-btn:hover {
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formbold--mx-3 {
+  margin-left: -12px;
+  margin-right: -12px;
+}
+
+.formbold-px-3 {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.formbold-form-header {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 36px;
+  color: #fff;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.formbold-form-header h3 {
+  font-weight: 700;
+  font-size: 20px;
+  color: white;
+}
+
+.formbold-form-header button {
+  color: white;
+  background: transparent;
+  border: none;
+}
+
+.formbold-chatbox-form {
+  padding: 20px;
+}
+
+.formbold-action-buttons {
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10000;
+}
+
+.formbold-action-btn {
+  width: 60px;
+  height: 60px;
+  background: #000;
+  color: white;
+  border-radius: 50%;
+  margin-left: 20px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formbold-action-btn.active {
+  display: none;
+}
+
+.formbold-action-btn.active .formbold-chat-icon {
+  display: none;
+}
+
+@media (min-width: 540px) {
+  .sm\:w-half {
+    width: 50%;
+  }
+}
+
+.times {
+  display: flex;
+  justify-content: space-between;
+}
+
+.times input {
+  flex-basis: 150px;
+  cursor: pointer;
+  outline: none;
+}

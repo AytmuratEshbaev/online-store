@@ -5,6 +5,7 @@ import Footer from '../../Components/Footer';
 import HeroSection from '../../Components/HeroSection';
 import ProductArea from '../../Components/ProductArea';
 import './HomePage.css';
+import ContactForm from '../../Components/ContactForm';
 
 function HomePage() {
    return (
@@ -14,6 +15,7 @@ function HomePage() {
                 <HeaderMiddle />
                 <HeaderBottom />
             </header>
+            <ContactForm />
             <HeroSection />
             <ProductArea />
             <Footer />
