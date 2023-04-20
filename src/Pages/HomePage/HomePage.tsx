@@ -14,7 +14,7 @@ function HomePage() {
                 <HeaderTop />
                 <HeaderMiddle />
                 <HeaderBottom />
-            </header>
+            </header> 
             <ContactForm />
             <HeroSection />
             <ProductArea />

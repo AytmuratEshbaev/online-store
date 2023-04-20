@@ -8,7 +8,6 @@ import { ICategory } from "../../../models/ICategory";
 import uuid from 'react-uuid';
 import { useEffect } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
-import { minHeight } from "@mui/system";
 
 
 type Props = {

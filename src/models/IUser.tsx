@@ -22,3 +22,12 @@ export interface IUser {
     country: ICountry;
   }[];
 }
+
+
+export interface IAddress {
+  street_address: string
+  postal_code: string
+  city: string
+  id: number
+  country: ICountry
+}

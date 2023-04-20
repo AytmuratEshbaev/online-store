@@ -3,231 +3,9 @@ import SingleProduct from "../SingleProduct";
 import "./ProductArea.css";
 import Slider from "react-slick";
 import uuid from 'react-uuid';
+import { productAPI } from "../../services/ProductService";
+import { IProduct } from "../../models/IProduct";
 
-const products = {
-  new: [
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/1.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/2.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/3.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/4.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/5.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/6.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/7.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/8.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-  ],
-  bestSeller: [
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/1.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/2.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/3.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/4.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/5.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/6.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/7.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/8.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-  ],
-  featured: [
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/1.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/2.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/3.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/4.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/5.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/6.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/7.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-    {
-      manufacturer: "Graphic Corner",
-      name: "Accusantium dolorem1",
-      price: 46.32,
-      imgSrc: "images/product/large-size/8.jpg",
-      manufacturerUrl: "#",
-      productUrl: "#",
-      discountPercentage: 8,
-    },
-  ],
-};
 
 function ProductArea() {
   const settings = {
@@ -265,6 +43,9 @@ function ProductArea() {
     ],
   };
 
+
+  const { data: products, isLoading } = productAPI.useFetchAllProductsQuery();
+
   return (
     <div className="product-area">
       <Container>
@@ -281,16 +62,6 @@ function ProductArea() {
                     <span>New Arrival</span>
                   </a>
                 </li>
-                <li>
-                  <a data-toggle="tab" href="#li-bestseller-product">
-                    <span>Bestseller</span>
-                  </a>
-                </li>
-                <li>
-                  <a data-toggle="tab" href="#li-featured-product">
-                    <span>Featured Products</span>
-                  </a>
-                </li>
               </ul>
             </div>
           </Col>
@@ -299,25 +70,7 @@ function ProductArea() {
           <div id="li-new-product" className="tab-pane active show" role="tabpanel">
             <Row>
               <Slider className="product-active" {...settings}>
-                {products.new.map((product: any) => (
-                  <SingleProduct product={product} key={uuid()} />
-                ))}
-              </Slider>
-            </Row>
-          </div>
-          <div id="li-bestseller-product" className="tab-pane" role="tabpanel">
-            <Row>
-              <Slider className="product-active" {...settings}>
-                {products.new.map((product: any) => (
-                  <SingleProduct product={product} key={uuid()} />
-                ))}
-              </Slider>
-            </Row>
-          </div>
-          <div id="li-featured-product" className="tab-pane" role="tabpanel">
-            <Row>
-              <Slider className="product-active" {...settings}>
-                {products.new.map((product: any) => (
+                {products?.map((product: IProduct) => (
                   <SingleProduct product={product} key={uuid()} />
                 ))}
               </Slider>

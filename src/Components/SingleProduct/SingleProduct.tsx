@@ -1,28 +1,19 @@
 import "./SingleProduct.css";
 import { Col } from "react-bootstrap";
+import { IProduct } from "../../models/IProduct";
 
 type Props = {
-  product: {
-    manufacturer: string;
-    name: string;
-    price: number;
-    imgSrc: string;
-    productUrl: string;
-    manufacturerUrl: string;
-    discountPercentage: number;
-  }
-};
+  product: IProduct;
+}
 
-function SingleProduct(props: Props) {
-  const product = props.product;
-  const oldPrice = (product.price * 100) / (100 - product.discountPercentage);
-
+function SingleProduct({ product }: Props) {
+  const oldPrice = ((product.price * 100) / (100 - product.discount)).toFixed(2);
   return (
     <Col lg={12}>
       <div className="single-product-wrap">
         <div className="product-image">
-          <a href={product.productUrl}>
-            <img src={product.imgSrc} alt={product.name} />
+          <a href='#'>
+            <img src={product.images[0].image_path} alt={product.name} />
           </a>
           <span className="sticker">New</span>
         </div>
@@ -30,7 +21,7 @@ function SingleProduct(props: Props) {
           <div className="product_desc_info">
             <div className="product-review">
               <h5 className="manufacturer">
-                <a href={product.manufacturerUrl}>{product.manufacturer}</a>
+                <a href='#'>Online Store</a>
               </h5>
               <div className="rating-box">
                 <ul className="rating">
@@ -53,23 +44,22 @@ function SingleProduct(props: Props) {
               </div>
             </div>
             <h4>
-              <a className="product_name" href={product.productUrl}>
+              <a className="product_name" href={'#'}>
                 {product.name}
               </a>
             </h4>
             <div className="price-box">
               <span
-                className={`new-price ${
-                  product.discountPercentage !== 0 ? "new-price-2" : null
-                }`}
+                className={`new-price ${product.discount !== 0 ? "new-price-2" : null
+                  }`}
               >
                 ${product.price}
               </span>
-              {product.discountPercentage !== 0 ? (
+              {product.discount !== 0 ? (
                 <>
                   <span className="old-price">${oldPrice}</span>
                   <span className="discount-percentage">
-                    -{product.discountPercentage}%
+                    -{product.discount}%
                   </span>
                 </>
               ) : null}
@@ -82,7 +72,7 @@ function SingleProduct(props: Props) {
               </li>
               <li>
                 <a className="links-details" href="#">
-                <i className="icon-heart-o"></i>
+                  <i className="icon-heart-o"></i>
                 </a>
               </li>
               <li>

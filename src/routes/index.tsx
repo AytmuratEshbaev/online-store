@@ -4,6 +4,7 @@ import Country from "../Pages/Admin/Country";
 import Calls from "../Pages/Admin/Calls";
 import CheckAdmin from "../Components/CheckAdmin";
 import CheckAuth from "../Components/CheckAuth";
+import Profile from "../Pages/Profile";
 
 const RouteContainer = () => {
     return (
@@ -15,6 +16,11 @@ const RouteContainer = () => {
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/about-us" element={<AboutUsPage />} />
                 <Route path="/faq" element={<FAQ />} />
+                <Route path="/profile" element={
+                    <CheckAuth>
+                        <Profile />
+                    </CheckAuth>
+                } />
                 <Route path="/admin" element={
                     <CheckAuth>
                         <CheckAdmin>

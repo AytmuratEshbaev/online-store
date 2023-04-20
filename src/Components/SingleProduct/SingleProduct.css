@@ -1,0 +1,12 @@
+.product-image {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.single-product-wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 400px;
+    margin: 0 10px;
+}
