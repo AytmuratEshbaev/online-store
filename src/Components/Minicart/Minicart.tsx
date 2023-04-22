@@ -1,35 +1,27 @@
+import { useAppSelector } from "../../hooks/redux";
+import { IOrderDetail } from "../../models/IOrder";
 import "./Minicart.css";
+import ProductMiniCart from "./ProductMiniCart";
+import { Link } from "react-router-dom";
 
 function Minicart() {
+  const orders = useAppSelector((state) => state.cartReducer.product);
+  const summa = orders.reduce((sum, order: IOrderDetail) => sum += order.price * order.quantity, 0);
+
   return (
     <div className="minicart">
       <ul className="minicart-product-list">
-        <li>
-          <a href="#" className="minicart-product-image">
-            <img src="images/product/small-size/5.jpg" alt="cart products" />
-          </a>
-          <div className="minicart-product-details">
-            <h6>
-              <a href="#">Колонка</a>
-            </h6>
-            <span>£40 x 1</span>
-          </div>
-          <button className="close" title="Remove">
-            <i className="icon-close"></i>
-          </button>
-        </li>
-
+        {orders.map((product: IOrderDetail) =>
+          <ProductMiniCart order={product} />
+        )}
       </ul>
       <p className="minicart-total">
-        Сумма: <span>$80.00</span>
+        Сумма: <span>${summa}</span>
       </p>
       <div className="minicart-button">
-        <a href="#" className="li-button li-button-fullwidth li-button-dark">
+        <Link to='cart' className="li-button li-button-fullwidth li-button-dark">
           <span>Корзина</span>
-        </a>
-        <a href="#" className="li-button li-button-fullwidth">
-          <span>Checkout</span>
-        </a>
+        </Link>
       </div>
     </div>
   );

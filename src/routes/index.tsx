@@ -5,6 +5,7 @@ import Calls from "../Pages/Admin/Calls";
 import CheckAdmin from "../Components/CheckAdmin";
 import CheckAuth from "../Components/CheckAuth";
 import Profile from "../Pages/Profile";
+import ShoppingCart from "../Pages/ShoppingCart";
 
 const RouteContainer = () => {
     return (
@@ -19,6 +20,11 @@ const RouteContainer = () => {
                 <Route path="/profile" element={
                     <CheckAuth>
                         <Profile />
+                    </CheckAuth>
+                } />
+                <Route path="/cart" element={
+                    <CheckAuth>
+                        <ShoppingCart />
                     </CheckAuth>
                 } />
                 <Route path="/admin" element={

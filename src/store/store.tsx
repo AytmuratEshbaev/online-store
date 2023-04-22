@@ -9,6 +9,7 @@ import userReducer from './reducers/UserSlice';
 import countryReducer from './reducers/CountrySlice';
 import categoryReducer from './reducers/CategorySlice';
 import { authSlice } from './reducers/AuthSlice';
+import cartReducer from './reducers/CartSlice';
 
 const apis = [countryAPI, userAPI, categoryAPI, authAPI, productAPI, callAPI];
 
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   userReducer,
   countryReducer,
   categoryReducer,
+  cartReducer,
   auth: authSlice.reducer,
   ...apiReducers
 });

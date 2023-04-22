@@ -18,8 +18,8 @@ const initialState: StateType = {
     date: ''
 }
 
-export const cartProduct = createSlice({
-    name: 'cartProduct',
+export const cartSlice = createSlice({
+    name: 'cartSlice',
     initialState,
     reducers: {
         addProduct: (state,action:PayloadAction<IProduct>)=>{
@@ -36,7 +36,7 @@ export const cartProduct = createSlice({
             }
                 state.count += 1
         },
-        decrementQty: (state, action: PayloadAction<number>) => {
+        decrement: (state, action: PayloadAction<number>) => {
             var index: number = state.product.findIndex(item => item.product_id === action.payload)
 
             if (state.product.find(item => item.product_id === action.payload)?.quantity === 1) {
@@ -62,11 +62,4 @@ export const cartProduct = createSlice({
     }
 })
 
-export const {
-    addProduct,
-    delProduct,
-    decrementQty,
-    addAddress,
-    setDate
-} = cartProduct.actions
-export const cartProductOrder = (state: any) => state.cartProduct
+export default cartSlice.reducer;

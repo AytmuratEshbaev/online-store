@@ -3,16 +3,19 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import SearchByCategory from "../SearchByCategory";
 import Minicart from "../Minicart";
 import { useState } from "react";
+import { useAppSelector } from "../../hooks/redux";
+import { IOrderDetail } from "../../models/IOrder";
 
 function HeaderMiddle() {
   const [controlMobileMenu, setControlMobileMenu] = useState(false);
+  const orders = useAppSelector((state) => state.cartReducer.product);
+  const summa = orders.reduce((sum, order: IOrderDetail) => sum += order.price * order.quantity, 0);
 
   return (
     <>
       <div
-        className={`header-middle ${
-          controlMobileMenu ? "open-mb" : "close-mb"
-        }`}
+        className={`header-middle ${controlMobileMenu ? "open-mb" : "close-mb"
+          }`}
       >
         <Container>
           <Row>
@@ -50,10 +53,13 @@ function HeaderMiddle() {
                           <li className="hm-minicart">
                             <div className="hm-minicart-trigger">
                               <span className="item-icon"></span>
-                              <span className="item-text">
-                                £160
-                                <span className="cart-item-count">2</span>
-                              </span>
+                              {orders.length !== 0
+                                ? <span className="item-text">
+                                  {summa}
+                                  <span className="cart-item-count">{orders.length}</span>
+                                </span>
+                                : null
+                              }
                             </div>
                             <Minicart />
                           </li>

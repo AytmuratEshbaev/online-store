@@ -1,6 +1,8 @@
 import "./SingleProduct.css";
 import { Col } from "react-bootstrap";
 import { IProduct } from "../../models/IProduct";
+import { useAppDispatch } from "../../hooks/redux";
+import { cartSlice } from "../../store/reducers/CartSlice";
 
 type Props = {
   product: IProduct;
@@ -8,6 +10,12 @@ type Props = {
 
 function SingleProduct({ product }: Props) {
   const oldPrice = ((product.price * 100) / (100 - product.discount)).toFixed(2);
+
+  const dispatch = useAppDispatch();
+
+  const handleAddCart = (card: IProduct) => dispatch(cartSlice.actions.addProduct(card));
+
+
   return (
     <Col lg={12}>
       <div className="single-product-wrap">
@@ -68,7 +76,7 @@ function SingleProduct({ product }: Props) {
           <div className="add-actions">
             <ul className="add-actions-link">
               <li className="add-cart active">
-                <a href="#">Add to cart</a>
+                <button onClick={() => handleAddCart(product)}>Add to a cart</button>
               </li>
               <li>
                 <a className="links-details" href="#">
