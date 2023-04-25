@@ -34,8 +34,18 @@
     quantity: number
     price: number
   }
-  
-  
-  
-  
-  
+
+  export interface IResponseOrders {
+    user_id: number
+    order_date: string
+    address_id: number
+    id: number
+    order_details: IOrderDetail[]
+    order_status: IOrderStatus
+    order_status_id:number
+  }
+
+  export interface IServerResponseOrder {
+    order: IOrder
+    order_details: IOrderDetail[]
+  }

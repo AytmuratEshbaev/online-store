@@ -23,11 +23,10 @@ const ShoppingProduct = ({ order }: Props) => {
         <td className="li-product-name"><a href="#">{product?.name}</a></td>
         <td className="li-product-price"><span className="amount">${order?.price}</span></td>
         <td className="quantity">
-            <label>Quantity</label>
             <div className="cart-plus-minus">
                 <input className="cart-plus-minus-box" value={order.quantity} type="text" />
-                <Button className="dec qtybutton" onClick={() => dispatch(decrement(order.product_id))}><KeyboardArrowDownIcon /></Button>
-                <Button className="inc qtybutton" onClick={product ? () => dispatch(addProduct(product)) : () => console.log("Error")}><KeyboardArrowUpIcon /></Button>
+                <Button className="dec qtybutton" onClick={() => dispatch(decrement(order.product_id))} style={{padding: 0, color: '#fff'}}><KeyboardArrowDownIcon /></Button>
+                <Button className="inc qtybutton" onClick={product ? () => dispatch(addProduct(product)) : () => console.log("Error")} style={{padding: 0, color: '#fff'}}><KeyboardArrowUpIcon /></Button>
             </div>
         </td>
         <td className="product-subtotal"><span className="amount">${order?.price * order?.quantity}</span></td>

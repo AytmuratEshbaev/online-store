@@ -13,6 +13,8 @@ import { useAppDispatch } from "../../hooks/redux";
 import { authSlice } from "../../store/reducers/AuthSlice";
 import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
+import { Link } from "react-router-dom";
+
 const settings = [{
   text: 'Profile',
   href: '/'
@@ -73,9 +75,9 @@ function HeaderTop() {
           <Typography textAlign="center" className="username">{decode.sub}</Typography>
           {settings.map((setting) => (
             <MenuItem key={setting.text} onClick={handleCloseUserMenu}>
-              <a href={setting.href}>
+              <Link to={setting.href}>
                 <Typography textAlign="center">{setting.text}</Typography>
-              </a>
+              </Link>
             </MenuItem>
           ))}
           <MenuItem onClick={handleLogout}>
@@ -96,7 +98,7 @@ function HeaderTop() {
               <ul className="phone-wrap">
                 <li>
                   <span>Телефон:</span>
-                  <a href="#">(+998) 93 362 36 21</a>
+                  <Link to='/'>(+998) 93 362 36 21</Link>
                 </li>
               </ul>
             </div>
@@ -105,10 +107,7 @@ function HeaderTop() {
             <div className="header-top-right">
               <ul className="ht-menu">
                 <li>
-                  <a href="#">Мой аккаунт</a>
-                </li>
-                <li>
-                  <a href="#">Checkout</a>
+                  <Link to="/cart">Корзина</Link>
                 </li>
                 <li>
                   {
