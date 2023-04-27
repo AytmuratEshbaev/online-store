@@ -1,6 +1,15 @@
 import { Dialog, DialogTitle, DialogContent, Box, TextField, Select, MenuItem, DialogActions, Button } from "@mui/material"
 import { toast } from 'react-toastify';
 import { useState } from 'react'
+import { orderAPI } from "../../services/OrderService";
+import { Cookies } from "react-cookie";
+import jwtDecode from "jwt-decode";
+import { userAPI } from "../../services/UserService";
+import { IUser } from "../../models/IUser";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { cartSlice } from "../../store/reducers/CartSlice";
+import { useNavigate } from "react-router-dom";
+
 
 type Props = {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>,
@@ -9,42 +18,54 @@ type Props = {
 
 
 const CheckoutModal = ({ setOpen, open }: Props) => {
+    const cookie = new Cookies();
+    const decode: {
+        access_token: string,
+        sub: string,
+        is_admin: number
+    } = jwtDecode(cookie.get('token'));
 
-    const [defaultAddress, setDefaultAddress] = useState<boolean>(true)
-    const [newAddress, setNewAddress] = useState<string>('');
-    const changingAdressType = (e: React.FormEvent) => {
-        const element = (e.target as HTMLInputElement);
-        setDefaultAddress(element.checked)
-    }
+    const { data: users, isLoading } = userAPI.useFetchAllUsersQuery(10);
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+    const resetState = cartSlice.actions.resetState;
+    let currentUser = users?.find((user: IUser) => user.username === decode.sub);
+    const [setOrder, { }] = orderAPI.useSetOrderMutation();
+    const { product } = useAppSelector((state) => state.cartReducer)
+    const createOrder = async () => {
 
-    const createProductData = async () => {
-        let address = defaultAddress ? "asdsa" : newAddress;
-        
-       const data = {
-        address
-       }
+        const data = {
+            order: {
+                user_id: currentUser ? currentUser.id : 0,
+                address_id: currentUser ? currentUser.addresses[0].id : 0,
+                order_status_id: 1,
+                order_date: new Date().toLocaleDateString().split('.').reverse().join('-')
+            },
+            order_details: product
+        }
 
-        await createProduct(data)
+        await setOrder(data)
             .unwrap()
             .then(response => {
-                toast.success("Product added successfully!", { position: toast.POSITION.TOP_RIGHT, toastId: 'product' });
+                toast.success("Спасибо за покупку!", { position: toast.POSITION.TOP_RIGHT, toastId: 'order' });
             })
-            .catch(error => toast.error(`${error.data.detail}`, {
+            .catch((error: any) => toast.error(`${error.data.detail}`, {
                 position: toast.POSITION.TOP_RIGHT,
-                toastId: 'product'
+                toastId: 'order'
             }))
     }
 
     const onSubmit = () => {
-        createProductData();
+        createOrder();
         setOpen(false)
+        dispatch(resetState());
+        navigate('/');
     };
 
     return (
         <Dialog open={open} onClose={() => setOpen(false)} maxWidth="md">
-            <DialogTitle sx={{ pb: 0 }}>New product</DialogTitle>
+            <DialogTitle sx={{ pb: 0 }}>New Order</DialogTitle>
 
-            <form onSubmit={onSubmit}>
                 <DialogContent>
                     <Box
                         component="form"
@@ -52,17 +73,13 @@ const CheckoutModal = ({ setOpen, open }: Props) => {
                             "& .MuiTextField-root": { m: 1, width: "35ch" },
                         }}
                     >
-                        <label htmlFor="address">По умолчания адресс</label>
-                        <input type="checkbox" name="address" id="address" checked={defaultAddress} required={true} onInput={changingAdressType} />
-                        <p>Address</p>
-                        <input type="text" name="address" id="address" disabled={!defaultAddress} placeholder="input address..." />
+                        <p>Adress: {`${currentUser?.addresses[0].city}, ${currentUser?.addresses[0].street_address}`}</p>
                     </Box>
                 </DialogContent>
                 <DialogActions sx={{ pt: 0 }}>
                     <Button onClick={() => setOpen(false)}>Cancel</Button>
-                    <Button type="submit">Submit</Button>
+                    <Button onClick={onSubmit}>Submit</Button>
                 </DialogActions>
-            </form>
         </Dialog>
     )
 }

@@ -8,10 +8,14 @@ import Breadcrumb from "../../Components/Breadcrumb";
 import HeaderBottom from "../../Components/HeaderBottom";
 import HeaderMiddle from "../../Components/HeaderMiddle";
 import HeaderTop from "../../Components/HeaderTop";
+import React from 'react'
+import CheckoutModal from "./CheckoutModal";
+import { ToastContainer } from "react-toastify";
 
 const ShoppingCart = () => {
     const orders = useAppSelector((state) => state.cartReducer.product);
     const summa = orders.reduce((sum, order) => sum + order.price * order.quantity, 0);
+    const [open, setOpen] = React.useState(false);
     return (
         <>
             <header>
@@ -21,6 +25,7 @@ const ShoppingCart = () => {
             </header>
             <Breadcrumb />
             <div className="Shopping-cart-area pt-60 pb-60">
+                <ToastContainer containerId='order'/>
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
@@ -48,11 +53,12 @@ const ShoppingCart = () => {
                                 <Typography variant="h6">
                                 Итого: <span style={{ fontWeight: 600 }}>${summa}</span>
                                 </Typography>
-                                <Button style={{ fontWeight: '500', fontSize: '16px', letterSpacing: '1px' }}>Заказать</Button>
+                                <Button style={{ fontWeight: '500', fontSize: '16px', letterSpacing: '1px' }} onClick={() => setOpen(true)}>Заказать</Button>
                             </div>
                         </div>
                     </div>
                 </div>
+                <CheckoutModal open={open} setOpen={setOpen} />
             </div>
         </>
     )

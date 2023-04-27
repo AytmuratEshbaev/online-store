@@ -58,7 +58,8 @@ export const cartSlice = createSlice({
         },
         setDate: (state, action: PayloadAction<string>) => {
             state.date = action.payload
-        }
+        },
+        resetState: () => initialState
     }
 })
 

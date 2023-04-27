@@ -10,8 +10,9 @@ import countryReducer from './reducers/CountrySlice';
 import categoryReducer from './reducers/CategorySlice';
 import { authSlice } from './reducers/AuthSlice';
 import cartReducer from './reducers/CartSlice';
+import { orderAPI } from "../services/OrderService";
 
-const apis = [countryAPI, userAPI, categoryAPI, authAPI, productAPI, callAPI];
+const apis = [countryAPI, userAPI, categoryAPI, authAPI, productAPI, callAPI, orderAPI];
 
 const apiReducers = {}
 apis.map((api: any) => ({ [api.reducerPath]: api.reducer }))
